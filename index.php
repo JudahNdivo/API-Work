@@ -8,7 +8,7 @@
 <body>
     <h1>This is my first page</h1>
     <?php
-    require_once "load.php";
+    require_once "load.php"; 
     print $Obj->user_age("Alex", 2004);
     ?>
 </body>
