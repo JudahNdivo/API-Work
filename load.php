@@ -1,32 +1,44 @@
+load.php
 <?php
 
-require_once "fnc.php";
-$Obj = new fnc();
+//Class Auto Load
 
-require_once "layout.php";
-$ObjLayouts = new Layouts();
+function classAutoLoad($classname)
+{
+    $directories = ["contents", "layouts", "menus"];
 
-require_once "menus.php";
+    foreach ($directories as $dir) {
+    
+        $filename = dirname(_FILE_) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR
+            . $classname . ".php";
+        if (file_exists($filename) and is_readable($filename)) {
+            require_once $filename;
+        }
+    }
+}
+
+spl_autoload_register('classAutoLoad');
+
+//Create instances of all classes
+
+// require_once "layouts/layouts.php";
+$ObjLayouts = new layouts();
+// require_once "menus/menus.php";
 $ObjMenus = new menus();
+// require_once "contents/headings.php";
+$ObjHeadings = new headings();
 
 
+// $arr = ["black", "white", "green", "red"];
 
-?>
-
-<h1> Today is Wednesday </h1>
-
- <?php
-
-// $arr = ["black","white","green","yellow","red"];
-
-// foreach($arr as $color){
-//     print $color . "<br>";
+// foreach($arr AS $color){
+//    print $color . "<br>";
 // }
 
-// print dirname(__FILE__);
+// print dirname(FILE);
 // print "<br>";
 // print "<br>";
-// print $_SERVER['PHP_SELF'];
+// print $_SERVER["PHP_SELF"];
 // print "<br>";
 // print "<br>";
 // print basename($_SERVER["PHP_SELF"]);
@@ -34,8 +46,9 @@ $ObjMenus = new menus();
 // print "<br>";
 
 // if(file_exists("index.php")){
-//     print "yes";
+//    print "yes";
 // }
 // else{
-//     print "no";
+//    print "no";
 // }
+?>

@@ -1,3 +1,2 @@
-body{
-    background-color: black;
-}
+@import url("StructureStyle.css");
+@import url("ContentStyle.css");

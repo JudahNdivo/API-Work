@@ -8,9 +8,11 @@
 <body>
     <h1>This is my first page</h1>
     <?php
-    require_once "load.php"; 
+    require "load.php"; 
     $ObjLayouts -> heading();
     $ObjMenus -> main_menu();
+    $ObjHeadings->main_heading();
+    $ObjLayouts -> footer();
     //print $Obj->user_age("Alex", 2004);
     ?>
 </body>
