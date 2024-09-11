@@ -1,4 +1,4 @@
-load.php
+
 <?php
 
 //Class Auto Load

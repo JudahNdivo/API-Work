@@ -9,10 +9,10 @@
     <h1>This is my first page</h1>
     <?php
     require "load.php"; 
-    $ObjLayouts -> heading();
-    $ObjMenus -> main_menu();
-    $ObjHeadings->main_heading();
-    $ObjLayouts -> footer();
+    $ObjLayouts->heading();
+    $ObjMenus->main_menu();
+    $ObjHeadings->main_banner();
+    $ObjLayouts->footer();
     //print $Obj->user_age("Alex", 2004);
     ?>
 </body>
