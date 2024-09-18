@@ -21,3 +21,8 @@ $ObjLayouts = new Layouts();
 $ObjMenus = new menus();
 $ObjHeadings = new headings();
 $ObjCont = new contents();
+
+require "includes/constants.php";
+require "includes/dbconnection.php";
+
+$conn = new dbconnection($dbtype, $hostname, $dbport, $hostuser, $hostpass, $dbname);   
