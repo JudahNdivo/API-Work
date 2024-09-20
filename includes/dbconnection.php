@@ -44,5 +44,33 @@ class dbConnection{
                 return "Connection failed: " . $this->connection->connect_error;
             }
         }
+        //Insert Query
+
+         function insert($table, $data){
+            ksort($data);
+            $fieldDetails = NULL;
+            $fieldNames = implode(',', array_keys($data));
+            $fieldValues = implode("', '", array_values($data));
+            $sth = "INSERT INTO $table ($fieldNames) VALUES ('$fieldValues')";
+
+            switch($this->db_type){
+                case 'PDO' :
+                    try{
+                        this->connection->exec($sth);
+                        return TRUE;
+                    }catch(PDOException $e) {
+                        return $sth . "<br>" . $e->getMessage();
+                    }
+                    break;
+                case 'MySQLi' :
+                    if ($this->connection->query($sth) === TRUE){
+                        return TRUE;
+                    } else {
+                        return "Error: " . $sth . "<br>" . $this->connection->error; 
+                    }
+                    break;
+            }
+
+        }
     }
 }

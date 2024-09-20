@@ -3,7 +3,7 @@
 // Class Auto Load
 function classAutoLoad($classname)
 {
-    $directories = ["contents", "layouts", "menus"];
+    $directories = ["contents", "layouts", "menus","forms", "processes"];
 
     foreach ($directories as $dir) {
         $filename = dirname(__FILE__) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR
@@ -25,4 +25,9 @@ $ObjCont = new contents();
 require "includes/constants.php";
 require "includes/dbconnection.php";
 
-$conn = new dbconnection($dbtype, $hostname, $dbport, $hostuser, $hostpass, $dbname);   
+$conn = new dbconnection($dbtype, $hostname, $dbport, $hostuser, $hostpass, $dbname);  
+
+//Create process instances 
+
+$ObjAuth = new auth();
+$ObjAuth->signup($conn);
